@@ -2,17 +2,30 @@
   This is your site JavaScript code - you can add interactivity!
 */
 
-const cyrillicAlphabet = new Map();
-cyrillicAlphabet.set("Д", "/d̪/");
-cyrillicAlphabet.set("Р", "/r/");
-cyrillicAlphabet.set("М", "/m/");
-cyrillicAlphabet.set("Т", "/t/");
-cyrillicAlphabet.set("Б", "/b/");
-cyrillicAlphabet.set("В", "/v/");
-cyrillicAlphabet.set("П", "/p/");
-cyrillicAlphabet.set("Ф", "/f/");
-cyrillicAlphabet.set("К", "/k/");
-cyrillicAlphabet.set("Л", "/l/");
+const bg = new Map();
+bg.set("А", "/ä/");
+bg.set("Б", "/b/");
+bg.set("В", "/v/");
+bg.set("Г", "/g/");
+bg.set("Д", "/d̪/");
+bg.set("Е", '/\u025B/');
+bg.set("Ж", "/\u0292/");
+bg.set("З", "/z/");
+bg.set("И", "/i/");
+bg.set("Й", "/j/");
+bg.set("К", "/k/");
+bg.set("Л", "/l/");
+bg.set("М", "/m/");
+bg.set("Н", "/n/");
+
+bg.set("Р", "/r/");
+bg.set("Т", "/t/");
+
+bg.set("В", "/v/");
+bg.set("П", "/p/");
+bg.set("Ф", "/f/");
+
+
 
 // https://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -36,7 +49,7 @@ function shuffle(array) {
 }
 
 function pick(number) {
-  const items = [...cyrillicAlphabet.entries()];
+  const items = [...bg.entries()];
   const result = [];
 
   for (let i = 0; i < number; i++) {
@@ -72,7 +85,7 @@ function makeCandidate([cy, latin], key) {
 
 const tableEl = document.getElementById("stage");
 const candidatesEl = document.getElementById("candidates");
-const correctEl = document.getElementById("")
+const correctEl = document.getElementById("correct-counter");
 
 let correct = 0;
 let target = pick(1)[0];
