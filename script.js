@@ -19,8 +19,18 @@ function shuffle() {
 }
 
 function pick(number) {
+  const items = [...cyrillicAlphabet.entries()];
   const result = [];
-  cyrillicAlphabet.length
+  
+  for (let i = 0; i < number; i++) {
+    const pickIdx = Math.floor(Math.random() * items.length)
+    const pick = items[pickIdx];
+    items.splice(pickIdx, 1);
+    
+    result.push(pick);
+  }
+  
+  return result;
 }
 
 function makeLetterBox(character) {
@@ -35,9 +45,8 @@ function makeLetterBox(character) {
 const tableEl = document.getElementById("table");
 const candidatesEl = document.getElementById("candidates");
 
-const target = pick(1);
+const target = pick(1)[0];
 const candidates = shuffle(...pick(4), target);
 
-for (const [cyrillic, phonetic] of cyrillicAlphabet) {
-  tableEl.appendChild(makeLetterBox(cyrillic));
-}
+tableEl.appendChild(makeLetterBox(target[0]));
+
