@@ -1,6 +1,3 @@
-/*
-  This is your site JavaScript code - you can add interactivity!
-*/
 
 // https://en.wikipedia.org/wiki/Bulgarian_alphabet
 const bg = [
