@@ -28,7 +28,13 @@ to this section's matching END comment to see page-specific styles.
 
 .prime {
   display: inline-block;
-  padding: 80px;
+  padding: 80px 50px;
   background-color: var(--color-bg);
   border: 10px solid;
+  
+  font-size: 36px;
+}
+
+.candidate {
+  
 }
