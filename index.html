@@ -23,15 +23,15 @@
     <!-- The website JavaScript file -->
     <script src="/script.js" defer></script>
   </head>
-  <body>
+  <body class="correct-guess">
     <p>Correct: <span id="correct-counter"></span></p>
     <p>Skipped: <span id="skip-counter"></span></p>
-          <p>Tried: <span id="sum-counter"></span></p>
+          <p>Tried: <span id="attempt-counter"></span></p>
 
     <div id="board">
     <div id="stage"></div>
     <div id="candidates"></div>
-      <div>
+      <div id="space-hint">
         <p>SPC to skip</p>
       </div>
     </div>

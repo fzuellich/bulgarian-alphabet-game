@@ -44,6 +44,11 @@ to this section's matching END comment to see page-specific styles.
   justify-content: space-evenly;
 }
 
+#space-hint {
+  align-self: center;
+  margin-top: 10px;
+}
+
 
 .prime {
   display: inline-block;
