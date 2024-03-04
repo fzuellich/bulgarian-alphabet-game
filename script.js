@@ -3,28 +3,36 @@
 */
 
 const bg = new Map();
-bg.set("А", "/ä/");
-bg.set("Б", "/b/");
-bg.set("В", "/v/");
-bg.set("Г", "/g/");
-bg.set("Д", "/d̪/");
-bg.set("Е", '/\u025B/');
-bg.set("Ж", "/\u0292/");
-bg.set("З", "/z/");
-bg.set("И", "/i/");
-bg.set("Й", "/j/");
-bg.set("К", "/k/");
-bg.set("Л", "/l/");
-bg.set("М", "/m/");
+bg.set("А", "/ä/");, 'a as in "apart"'
+bg.set("Б", "/b/");, 'b as in "bug"'
+bg.set("В", "/v/");, 'v as in "vet"'
+bg.set("Г", "/g/");, 'g as in "good"'
+bg.set("Д", "/d̪/");, 'd as in "dog"'
+bg.set("Е", '/\u025B/');, 'e as in "best"'
+bg.set("Ж", "/\u0292/");, 's as in "treasure"'
+bg.set("З", "/z/");, 'z as in "zoo"'
+bg.set("И", "/i/");, 'i as in "machine"'
+bg.set("Й", "/j/");, 'y as in "yes"'
+bg.set("К", "/k/");, 'k as in "kick"'
+bg.set("Л", "/l/");, 'l as in "call"'
+bg.set("М", "/m/");, ''
 bg.set("Н", "/n/");
-
-bg.set("Р", "/r/");
-bg.set("Т", "/t/");
-
-bg.set("В", "/v/");
+bg.set("О", "/\u0254/");
 bg.set("П", "/p/");
+bg.set("Р", "/r/");
+bg.set("С", "/s/");
+bg.set("Т", "/t/");
+bg.set("У", "/u/");
 bg.set("Ф", "/f/");
-
+bg.set("x", "/x/");
+bg.set("Ц", "/\u02A6/");
+bg.set("Ч", "/\u0074\u0361\u0283/");
+bg.set("Ш", "/\u0283/");
+bg.set("Щ", "/ʃt/");
+bg.set("Ъ", "/ɤ/");
+bg.set("Ь", "/j/");
+bg.set("Ю", "/ju/");
+bg.set("Я", "/ja/");
 
 
 // https://stackoverflow.com/a/2450976
