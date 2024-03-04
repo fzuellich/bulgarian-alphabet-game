@@ -16,18 +16,20 @@ cyrillicAlphabet.set("Л", "/l/");
 
 // https://stackoverflow.com/a/2450976
 function shuffle(array) {
-  let currentIndex = array.length, randomIndex;
+  let currentIndex = array.length,
+    randomIndex;
 
   // While there remain elements to shuffle.
   while (currentIndex > 0) {
-
     // Pick a remaining element.
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
 
     // And swap it with the current element.
     [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
+      array[randomIndex],
+      array[currentIndex],
+    ];
   }
 
   return array;
@@ -36,15 +38,15 @@ function shuffle(array) {
 function pick(number) {
   const items = [...cyrillicAlphabet.entries()];
   const result = [];
-  
+
   for (let i = 0; i < number; i++) {
-    const pickIdx = Math.floor(Math.random() * items.length)
+    const pickIdx = Math.floor(Math.random() * items.length);
     const pick = items[pickIdx];
     items.splice(pickIdx, 1);
-    
+
     result.push(pick);
   }
-  
+
   return result;
 }
 
@@ -59,27 +61,40 @@ function makeLetterBox(character) {
 
 function makeCandidate([cy, latin], key) {
   const template = document.querySelector("#candidate-tpl");
-  
+
   const candidate = template.content.cloneNode(true);
   const p = candidate.querySelectorAll("p");
-  p[0].textContent = cy;
+  p[0].textContent = latin;
   p[1].textContent = key;
-  
-  return candidate
+
+  return candidate;
 }
 
 const tableEl = document.getElementById("stage");
 const candidatesEl = document.getElementById("candidates");
 
-const target = pick(1)[0];
-const candidates = shuffle([...pick(4), target]);
+  const target = pick(1)[0];
+  const candidates = shuffle([...pick(3), target]);
+  const keys = "hjkl".split("");
 
-tableEl.appendChild(makeLetterBox(target[0]));
+function round() {
 
-const keys = 'hjkl;'.split();
-for (let i = 0; i < 5; i++) {
-  const key = keys[i];
-  const candidate = candidates[i];
-  candidatesEl.appendChild(makeCandidate(candidate, key));
+  tableEl.appendChild(makeLetterBox(target[0]));
+
+
+  for (let i = 0; i < 4; i++) {
+    const key = keys[i];
+    const candidate = candidates[i];
+    candidatesEl.appendChild(makeCandidate(candidate, key));
+  }
 }
 
+round();
+
+window.addEventListener("keydown", (event) => {
+  if (event.isComposing || event.keyCode === 229) {
+    return
+  }
+  
+  console.log(event.keyCode, {event});
+});
