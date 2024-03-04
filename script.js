@@ -57,13 +57,15 @@ function makeLetterBox(character) {
   return el;
 }
 
-function makeCandidate(character) {
-  const el = document.createElement("div");
-  el.classList.add("candidate");
+function makeCandidate([cy, latin], key) {
+  const template = document.querySelector("#candidate-tpl");
   
-  el.innerText = character;
+  const candidate = template.content.cloneNode(true);
+  const p = candidate.querySelectorAll("p");
+  p[0].textContent = cy;
+  p[1].textContent = key;
   
-  return el
+  return candidate
 }
 
 const tableEl = document.getElementById("stage");
@@ -74,7 +76,10 @@ const candidates = shuffle([...pick(4), target]);
 
 tableEl.appendChild(makeLetterBox(target[0]));
 
-for (const candidate of candidates) {
-  candidatesEl.appendChild(makeCandidate(candidate[1]));
+const keys = 'hjkl;'.split();
+for (let i = 0; i < 5; i++) {
+  const key = keys[i];
+  const candidate = candidates[i];
+  candidatesEl.appendChild(makeCandidate(candidate, key));
 }
 

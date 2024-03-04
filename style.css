@@ -29,17 +29,20 @@ to this section's matching END comment to see page-specific styles.
 #board {
  display: flex;
   flex-direction: column;
+  margin-top: 20vh;
 }
 
 #stage {
-  background: pink;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10vh;
 }
 
 #candidates {
   background: green;
   display: flex;
   flex-direction: row;
-  align-items: space-between;
+  justify-content: space-evenly;
 }
 
 
