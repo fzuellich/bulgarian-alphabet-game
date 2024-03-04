@@ -26,6 +26,23 @@ to this section's matching END comment to see page-specific styles.
   --font-family-header: "HK Grotesk";
 }
 
+#board {
+ display: flex;
+  flex-direction: column;
+}
+
+#stage {
+  background: pink;
+}
+
+#candidates {
+  background: green;
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+}
+
+
 .prime {
   display: inline-block;
   padding: 80px 50px;
@@ -36,5 +53,8 @@ to this section's matching END comment to see page-specific styles.
 }
 
 .candidate {
-  
+  display: inline-block;
+  padding: 40px 25px;
+  background-color: var(--color-bg);
+  border: 5px solid;
 }

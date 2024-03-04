@@ -14,8 +14,23 @@ cyrillicAlphabet.set("Ф", "/f/");
 cyrillicAlphabet.set("К", "/k/");
 cyrillicAlphabet.set("Л", "/l/");
 
-function shuffle() {
-  
+// https://stackoverflow.com/a/2450976
+function shuffle(array) {
+  let currentIndex = array.length, randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex > 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
 }
 
 function pick(number) {
@@ -42,11 +57,24 @@ function makeLetterBox(character) {
   return el;
 }
 
-const tableEl = document.getElementById("table");
+function makeCandidate(character) {
+  const el = document.createElement("div");
+  el.classList.add("candidate");
+  
+  el.innerText = character;
+  
+  return el
+}
+
+const tableEl = document.getElementById("stage");
 const candidatesEl = document.getElementById("candidates");
 
 const target = pick(1)[0];
-const candidates = shuffle(...pick(4), target);
+const candidates = shuffle([...pick(4), target]);
 
 tableEl.appendChild(makeLetterBox(target[0]));
+
+for (const candidate of candidates) {
+  candidatesEl.appendChild(makeCandidate(candidate[1]));
+}
 
