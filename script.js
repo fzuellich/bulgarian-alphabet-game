@@ -72,29 +72,51 @@ function makeCandidate([cy, latin], key) {
 
 const tableEl = document.getElementById("stage");
 const candidatesEl = document.getElementById("candidates");
+const correctEl = document.getElementById("")
 
-  const target = pick(1)[0];
-  const candidates = shuffle([...pick(3), target]);
-  const keys = "hjkl".split("");
+let correct = 0;
+let target = pick(1)[0];
+let candidates = shuffle([...pick(3), target]);
+const keys = "hjkl".split("");
+
+function reset() {
+  tableEl.replaceChildren();
+  candidatesEl.replaceChildren();
+}
 
 function round() {
-
+  reset();
+  target = pick(1)[0];
+  candidates = shuffle([...pick(3), target]);
   tableEl.appendChild(makeLetterBox(target[0]));
-
 
   for (let i = 0; i < 4; i++) {
     const key = keys[i];
     const candidate = candidates[i];
     candidatesEl.appendChild(makeCandidate(candidate, key));
   }
+  
+  correctEl.textContent = correct;
 }
 
 round();
 
+function match(key) {
+  const keyIdx = keys.findIndex((k) => k === key);
+  const selectedCandidate = candidates[keyIdx];
+  
+  return (selectedCandidate[0] === target[0]);
+}
+
 window.addEventListener("keydown", (event) => {
   if (event.isComposing || event.keyCode === 229) {
-    return
+    return;
+  }
+
+  const isGuessCorrect = match(event.key);
+  if (isGuessCorrect) {
+    correct++;
   }
   
-  console.log(event.keyCode, {event});
+  round();
 });
